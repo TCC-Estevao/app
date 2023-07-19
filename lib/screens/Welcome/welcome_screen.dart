@@ -1,4 +1,4 @@
-import 'package:app/screens/components/body.dart';
+import 'package:app/screens/Welcome/components/body.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatelessWidget {

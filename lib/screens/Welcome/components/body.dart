@@ -1,7 +1,10 @@
 import 'package:app/constants.dart';
+import 'package:app/screens/Login/login_screen.dart';
+import 'package:app/screens/SignUp/body.dart';
+import 'package:app/screens/SignUp/signup_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../../components/rounded_button.dart';
+import '../../../components/rounded_button.dart';
 
 class Body extends StatelessWidget {
   const Body({super.key});
@@ -23,11 +26,24 @@ class Body extends StatelessWidget {
               ),
               const SizedBox(height: 80),
               RoundedButton(
-                press: () {},
+                press: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return const LoginScreen();
+                      },
+                    ),
+                  );
+                },
                 text: "LOGIN",
               ),
               RoundedButton(
-                press: () {},
+                press: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return const SignUpScreen();
+                  }));
+                },
                 color: primaryLightColor,
                 textColor: Colors.black,
                 text: "Criar Conta",
