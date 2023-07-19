@@ -1,5 +1,7 @@
 import 'package:app/constants.dart';
 import 'package:app/screens/Login/login_screen.dart';
+import 'package:app/screens/SignUp/body.dart';
+import 'package:app/screens/SignUp/signup_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../components/already_have_account_check.dart';
@@ -31,13 +33,15 @@ class LoginBody extends StatelessWidget {
             const RoundedInputField(hinText: "Your Email", icon: Icons.person),
             const RoundedPasswordField(),
             RoundedButton(press: () {}, text: "Login"),
-            const SizedBox(height: 30),
+            SizedBox(
+              height: size.height * 0.03,
+            ),
             AlreadyHaveAnAccountCheck(press: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return const LoginScreen();
+                    return const SignUpScreen();
                   },
                 ),
               );
