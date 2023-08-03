@@ -1,0 +1,7 @@
+enum FinancialAccountTypeEnum {
+  CHECKING_ACCOUNT,
+  SAVINGS_ACCOUNT,
+  WALLET,
+  INVESTMENT,
+  OUTHERS,
+}

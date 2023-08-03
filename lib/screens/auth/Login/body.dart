@@ -1,12 +1,12 @@
 import 'package:app/constants.dart';
-import 'package:app/screens/Login/login_screen.dart';
-import 'package:app/screens/SignUp/body.dart';
-import 'package:app/screens/SignUp/signup_screen.dart';
+import 'package:app/screens/auth/Login/login_screen.dart';
+import 'package:app/screens/auth/SignUp/body.dart';
+import 'package:app/screens/auth/SignUp/signup_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../../components/already_have_account_check.dart';
-import '../../components/rounded_button.dart';
-import '../../components/rounded_input.dart';
+import '../../../components/already_have_account_check.dart';
+import '../../../components/rounded_button.dart';
+import '../../../components/rounded_input.dart';
 import 'components/rounded_password_input.dart';
 
 class LoginBody extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'package:app/constants.dart';
-import 'package:app/screens/Login/login_screen.dart';
-import 'package:app/screens/SignUp/body.dart';
-import 'package:app/screens/SignUp/signup_screen.dart';
+import 'package:app/screens/auth/Login/login_screen.dart';
+import 'package:app/screens/auth/SignUp/body.dart';
+import 'package:app/screens/auth/SignUp/signup_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../components/rounded_button.dart';
