@@ -3,7 +3,6 @@ import 'package:app/components/rounded_button.dart';
 import 'package:app/components/rounded_input.dart';
 import 'package:app/screens/auth/Login/components/rounded_password_input.dart';
 import 'package:app/screens/auth/Login/login_screen.dart';
-import 'package:app/screens/Welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants.dart';
@@ -52,7 +51,7 @@ class _SignUpBodyState extends State<SignUpBody> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         height: size.height,
         width: double.infinity,
         child: Column(

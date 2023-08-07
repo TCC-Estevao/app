@@ -1,6 +1,5 @@
 import 'package:app/constants.dart';
 import 'package:app/screens/auth/Login/login_screen.dart';
-import 'package:app/screens/auth/SignUp/body.dart';
 import 'package:app/screens/auth/SignUp/signup_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +12,7 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return SingleChildScrollView(
-      child: Container(
+      child: SizedBox(
           height: size.height,
           width: size.width,
           child: Column(

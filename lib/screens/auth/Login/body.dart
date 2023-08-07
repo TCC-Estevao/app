@@ -1,6 +1,4 @@
 import 'package:app/constants.dart';
-import 'package:app/screens/auth/Login/login_screen.dart';
-import 'package:app/screens/auth/SignUp/body.dart';
 import 'package:app/screens/auth/SignUp/signup_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -28,7 +26,7 @@ class _LoginBodyState extends State<LoginBody> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         height: size.height,
         width: double.infinity,
         child: Column(

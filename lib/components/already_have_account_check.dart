@@ -17,7 +17,7 @@ class AlreadyHaveAnAccountCheck extends StatelessWidget {
       children: [
         Text(
           login ? "Não possui uma conta? " : "Já possui uma conta? ",
-          style: TextStyle(color: primaryColor),
+          style: const TextStyle(color: primaryColor),
         ),
         GestureDetector(
           onTap: press,
