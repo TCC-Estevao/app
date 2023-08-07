@@ -7,10 +7,22 @@ import 'package:flutter/material.dart';
 import '../../../components/already_have_account_check.dart';
 import '../../../components/rounded_button.dart';
 import '../../../components/rounded_input.dart';
+import '../services/auth_service.dart';
 import 'components/rounded_password_input.dart';
 
-class LoginBody extends StatelessWidget {
+class LoginBody extends StatefulWidget {
   const LoginBody({super.key});
+
+  @override
+  State<LoginBody> createState() => _LoginBodyState();
+}
+
+class _LoginBodyState extends State<LoginBody> {
+  final AuthService authService = AuthService();
+
+  final TextEditingController _emailController = TextEditingController();
+
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +42,10 @@ class LoginBody extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 90),
-            const RoundedInputField(hinText: "Your Email", icon: Icons.person),
+            RoundedInputField(
+                hinText: "Your Email",
+                icon: Icons.person,
+                controller: _emailController),
             const RoundedPasswordField(),
             RoundedButton(press: () {}, text: "Login"),
             SizedBox(
