@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-import '../../../constants/error_handling.dart';
-import '../../../constants/utils.dart';
-import '../../../models/user.dart';
+import '../../../../../constants/error_handling.dart';
+import '../../../../../constants/utils.dart';
+import '../../../../../models/user.dart';
 
 class AuthService {
   //sign up user

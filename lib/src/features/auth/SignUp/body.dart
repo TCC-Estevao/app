@@ -1,12 +1,12 @@
 import 'package:app/components/already_have_account_check.dart';
 import 'package:app/components/rounded_button.dart';
 import 'package:app/components/rounded_input.dart';
-import 'package:app/screens/auth/Login/components/rounded_password_input.dart';
-import 'package:app/screens/auth/Login/login_screen.dart';
+import 'package:app/src/features/auth/Login/components/rounded_password_input.dart';
+import 'package:app/src/features/auth/Login/login_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../../../constants.dart';
-import '../services/auth_service.dart';
+import '../../../../constants.dart';
+import '../interactor/services/auth_service.dart';
 
 class SignUpBody extends StatefulWidget {
   const SignUpBody({super.key});

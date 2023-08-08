@@ -1,4 +1,4 @@
-import 'package:app/screens/auth/interactor/entities/tokenization.dart';
+import 'package:app/src/features/auth/interactor/entities/tokenization.dart';
 
 sealed class AuthState {}
 
