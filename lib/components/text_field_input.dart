@@ -1,4 +1,4 @@
-import 'package:app/constants.dart';
+import 'package:app/styles/colors.dart';
 import 'package:flutter/material.dart';
 
 class TextFieldContainer extends StatelessWidget {

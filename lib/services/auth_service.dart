@@ -2,15 +2,14 @@
 
 import 'dart:developer';
 
-import 'package:app/src/features/auth/interactor/dtos/email_credential_dto.dart';
-import 'package:app/src/features/auth/interactor/states/auth_state.dart';
+import 'package:app/dtos/user/email_credential_dto.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-import '../../../../../constants/error_handling.dart';
-import '../../../../../constants/utils.dart';
-import '../../../../../models/user.dart';
+import '../constants/error_handling.dart';
+import '../constants/utils.dart';
+import '../models/user.dart';
 
 class AuthService {
   //sign up user
