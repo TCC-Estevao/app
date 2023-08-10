@@ -5,12 +5,12 @@ import 'package:asp/asp.dart';
 class AuthReducer extends Reducer {
   final AuthService service;
   AuthReducer(this.service) {
-    on(() => [checkAuthAction], _checkAuth());
-    on(() => [loginWithEmailAction], _loginWithEmail);
-    on(() => [logoutAction], _logout());
+    on(() => [checkAuthAction], () {});
+    on(() => [loginWithEmailAction], () {});
+    on(() => [logoutAction], () {});
   }
 
-  _checkAuth() {
+/*   _checkAuth() {
     service.checkAuth().then(authState.setValue);
   }
 
@@ -21,5 +21,5 @@ class AuthReducer extends Reducer {
 
   _logout() {
     service.logout().then(authState.setValue);
-  }
+  } */
 }

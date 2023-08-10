@@ -30,7 +30,6 @@ class _SignUpBodyState extends State<SignUpBody> {
   }
 
   void signUpUser() {
-    print(_emailController);
     authService.signUpUser(
       context: context,
       email: _emailController.text,
@@ -68,11 +67,16 @@ class _SignUpBodyState extends State<SignUpBody> {
               height: 90,
             ),
             RoundedInputField(
+              hinText: "Seu nome",
+              icon: Icons.person,
+              controller: _nameController,
+            ),
+            RoundedInputField(
               hinText: "Seu email",
               icon: Icons.person,
               controller: _emailController,
             ),
-            const RoundedPasswordField(),
+            RoundedPasswordField(controller: _passwordController),
             RoundedButton(
               press: () {
                 signUpUser();

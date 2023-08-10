@@ -4,16 +4,19 @@ import 'package:flutter/material.dart';
 import '../../../../../components/text_field_input.dart';
 
 class RoundedPasswordField extends StatelessWidget {
+  final TextEditingController controller;
   const RoundedPasswordField({
     super.key,
+    required this.controller,
   });
 
   @override
   Widget build(BuildContext context) {
-    return const TextFieldContainer(
+    return TextFieldContainer(
       child: TextField(
+        controller: controller,
         obscureText: true,
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           hintText: "Senha",
           icon: Icon(
             Icons.lock,

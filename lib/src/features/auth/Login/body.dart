@@ -44,7 +44,7 @@ class _LoginBodyState extends State<LoginBody> {
                 hinText: "Your Email",
                 icon: Icons.person,
                 controller: _emailController),
-            const RoundedPasswordField(),
+            RoundedPasswordField(controller: _passwordController),
             RoundedButton(press: () {}, text: "Login"),
             SizedBox(
               height: size.height * 0.03,

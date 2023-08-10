@@ -12,7 +12,7 @@ import '../../../../../constants/error_handling.dart';
 import '../../../../../constants/utils.dart';
 import '../../../../../models/user.dart';
 
-abstract class AuthService {
+class AuthService {
   //sign up user
   Future<void> signUpUser({
     required BuildContext context,
@@ -21,17 +21,10 @@ abstract class AuthService {
     required String name,
   }) async {
     try {
-      User user = User(
-        id: '',
-        name: name,
-        email: email,
-        password: password,
-        isAdmin: false,
-        category: [],
-        financialAccount: [],
-        spendingLimit: -1,
-        token: '',
-      );
+      SignUpUserDTO user =
+          SignUpUserDTO(email: email, password: password, name: name);
+      log("Senha");
+      log(user.password);
       String? uri = dotenv.env['URI'];
       log(uri!);
       http.Response response = await http.post(
@@ -41,12 +34,13 @@ abstract class AuthService {
           'Content-Type': 'application/json; charset=UTF-8'
         },
       );
-      print(response.body);
+      print(response);
 
       httpErrorHandle(
         response: response,
         context: context,
         onSuccess: () {
+          log("Deu certto");
           showSnackBar(
             context,
             'Account created! Login with the same credentials!',
@@ -58,9 +52,9 @@ abstract class AuthService {
     }
   }
 
-  Future<AuthState> login(EmailCredentialDTO dto);
+  /* Future<AuthState> login(EmailCredentialDTO dto);
 
   Future<AuthState> logout();
 
-  Future<AuthState> checkAuth();
+  Future<AuthState> checkAuth(); */
 }
