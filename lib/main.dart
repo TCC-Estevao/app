@@ -1,3 +1,4 @@
+import 'package:app/router.dart';
 import 'package:app/styles/colors.dart';
 import 'package:app/screens/Welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      onGenerateRoute: (settings) => generateRouter(settings),
       debugShowCheckedModeBanner: false,
       title: 'Finance',
       theme: ThemeData(

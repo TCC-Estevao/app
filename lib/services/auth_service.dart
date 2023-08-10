@@ -3,13 +3,13 @@
 import 'dart:developer';
 
 import 'package:app/dtos/user/email_credential_dto.dart';
+import 'package:app/screens/Login/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import '../constants/error_handling.dart';
 import '../constants/utils.dart';
-import '../models/user.dart';
 
 class AuthService {
   //sign up user
@@ -33,7 +33,7 @@ class AuthService {
           'Content-Type': 'application/json; charset=UTF-8'
         },
       );
-      print(response);
+      log('${response.statusCode}');
 
       httpErrorHandle(
         response: response,
@@ -42,11 +42,20 @@ class AuthService {
           log("Deu certto");
           showSnackBar(
             context,
-            'Account created! Login with the same credentials!',
+            'Conta criada com sucesso! Voce será direcionado para a página de Login',
           );
+          Future.delayed(Duration(seconds: 2), () {
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              LoginScreen.routeName,
+              (route) => false,
+            );
+          });
         },
       );
-    } catch (error) {
+    } catch (error, stackTrace) {
+      print(stackTrace);
+      log("Entrou aqui ${error.toString()}");
       showSnackBar(context, error.toString());
     }
   }

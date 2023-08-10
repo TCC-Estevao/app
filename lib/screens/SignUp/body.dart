@@ -30,6 +30,7 @@ class _SignUpBodyState extends State<SignUpBody> {
   }
 
   void signUpUser() {
+    FocusScope.of(context).unfocus();
     authService.signUpUser(
       context: context,
       email: _emailController.text,
