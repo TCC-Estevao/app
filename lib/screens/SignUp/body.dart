@@ -37,14 +37,6 @@ class _SignUpBodyState extends State<SignUpBody> {
       password: _passwordController.text,
       name: _nameController.text,
     );
-/*     Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) {
-          return const WelcomeScreen();
-        },
-      ),
-    ); */
   }
 
   @override
