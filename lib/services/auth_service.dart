@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:app/dtos/user/login-user-dto.dart';
@@ -8,9 +9,13 @@ import 'package:app/screens/Login/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../constants/error_handling.dart';
 import '../constants/utils.dart';
+import '../providers/user-provider.dart';
+import '../screens/Home/home_screen.dart';
 
 class AuthService {
   //sign up user
@@ -69,6 +74,8 @@ class AuthService {
     try {
       LoginUserDTO user = LoginUserDTO(email: email, password: password);
       String? uri = dotenv.env['URI'];
+      String url = '$uri/login';
+      log('$url');
       http.Response response = await http.post(
         Uri.parse('$uri/login'),
         body: user.toJson(),
@@ -80,24 +87,26 @@ class AuthService {
       httpErrorHandle(
         response: response,
         context: context,
-        onSuccess: () {
-          log("Deu certto");
-          showSnackBar(
+        onSuccess: () async {
+          SharedPreferences preferences = await SharedPreferences.getInstance();
+
+          Provider.of<UserProvider>(context, listen: false)
+              .setUser(response.body);
+
+          await preferences.setString(
+              'x-access-token', jsonDecode(response.body)['access_token']);
+          Navigator.pushNamedAndRemoveUntil(
             context,
-            'Conta criada com sucesso! Voce será direcionado para a página de Login',
+            HomeScreen.routeName,
+            (route) => false,
           );
-          Future.delayed(Duration(seconds: 2), () {
-            Navigator.pushNamedAndRemoveUntil(
-              context,
-              LoginScreen.routeName,
-              (route) => false,
-            );
-          });
+
+          log("Deu tudo certo");
         },
       );
     } catch (error, stackTrace) {
       print(stackTrace);
-      log("Entrou aqui ${error.toString()}");
+      log("Entrou aqui Login: ${error.toString()}");
       showSnackBar(context, error.toString());
     }
   }

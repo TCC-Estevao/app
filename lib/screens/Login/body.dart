@@ -27,9 +27,9 @@ class _LoginBodyState extends State<LoginBody> {
     _passwordController.dispose();
   }
 
-  void signUpUser() {
+  void loginUser() async {
     FocusScope.of(context).unfocus();
-    authService.loginUser(
+    await authService.loginUser(
       context: context,
       email: _emailController.text,
       password: _passwordController.text,
@@ -55,11 +55,15 @@ class _LoginBodyState extends State<LoginBody> {
             ),
             const SizedBox(height: 90),
             RoundedInputField(
-                hinText: "Your Email",
+                hinText: "Seu Email",
                 icon: Icons.person,
                 controller: _emailController),
             RoundedPasswordField(controller: _passwordController),
-            RoundedButton(press: () {}, text: "Login"),
+            RoundedButton(
+                press: () {
+                  loginUser();
+                },
+                text: "Login"),
             SizedBox(
               height: size.height * 0.03,
             ),

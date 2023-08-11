@@ -1,3 +1,4 @@
+import 'package:app/screens/Home/home_screen.dart';
 import 'package:app/screens/Login/login_screen.dart';
 import 'package:app/screens/SignUp/signup_screen.dart';
 import 'package:app/screens/Welcome/welcome_screen.dart';
@@ -19,6 +20,11 @@ Route<dynamic> generateRouter(RouteSettings routeSettings) {
       return MaterialPageRoute(
         settings: routeSettings,
         builder: (_) => const LoginScreen(),
+      );
+    case HomeScreen.routeName:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => const HomeScreen(),
       );
     default:
       return MaterialPageRoute(

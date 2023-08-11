@@ -17,8 +17,6 @@ void httpErrorHandle({
 
       break;
     default:
-      Response res = response;
-      log("Entrou NESSE AQUI ${jsonDecode(response.body)['message']}");
       showSnackBar(context, jsonDecode(response.body)['message'][0]);
       return;
   }

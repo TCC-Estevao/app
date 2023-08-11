@@ -9,10 +9,10 @@ class User {
   final String email;
   final String password;
   final bool isAdmin;
-  int spendingLimit;
+  int? spendingLimit;
   List<FinancialAccount> financialAccount;
   List<dynamic> category;
-  String token;
+  String accessToken;
 
   User({
     List<dynamic>? category,
@@ -23,7 +23,7 @@ class User {
     required this.password,
     required this.isAdmin,
     this.spendingLimit = -1,
-    required this.token,
+    required this.accessToken,
   })  : category = category ?? [],
         financialAccount = financialAccount ?? [];
 
@@ -47,12 +47,16 @@ class User {
       email: map["email"] ?? '',
       password: map['password'] ?? '',
       isAdmin: map['isAdmin'],
-      token: map['token'],
+      accessToken: map['access_token'],
       spendingLimit: map['spendingLimit'],
-      category: List<Map<String, dynamic>>.from(
-          map['category']?.map((x) => Map<String, dynamic>.from(x))),
-      financialAccount: List<FinancialAccount>.from(
-          map['financialAccount']?.map((x) => Map<String, dynamic>.from(x))),
+      category: (map['category'] != null)
+          ? List<Map<String, dynamic>>.from(
+              map['category']?.map((x) => Map<String, dynamic>.from(x)))
+          : [],
+      financialAccount: (map['financialAccount'] != null)
+          ? List<FinancialAccount>.from(
+              map['financialAccount']?.map((x) => Map<String, dynamic>.from(x)))
+          : [],
     );
   }
 
@@ -69,7 +73,7 @@ class User {
     int? spendingLimit,
     List<FinancialAccount>? financialAccount,
     List<dynamic>? category,
-    String? token,
+    String? access_token,
   }) {
     return User(
       id: id ?? this.id,
@@ -80,7 +84,7 @@ class User {
       spendingLimit: spendingLimit ?? this.spendingLimit,
       financialAccount: financialAccount ?? this.financialAccount,
       category: category ?? this.category,
-      token: token ?? this.token,
+      accessToken: access_token ?? this.accessToken,
     );
   }
 }
