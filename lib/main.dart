@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
       ),
       home: Provider.of<UserProvider>(context).user.accessToken.isNotEmpty
-          ? Provider.of<UserProvider>(context).user.isAdmin == 'user'
+          ? Provider.of<UserProvider>(context).user.isAdmin
               ? const HomeScreen()
               : const AdminScreen()
           : const WelcomeScreen(),

@@ -5,12 +5,13 @@ import 'dart:developer';
 
 import 'package:app/dtos/user/login-user-dto.dart';
 import 'package:app/dtos/user/signup-user-dto.dart';
+import 'package:app/models/storage_item.dart';
 import 'package:app/screens/Login/login_screen.dart';
+import 'package:app/services/secure_storeage_service.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../constants/error_handling.dart';
 import '../constants/utils.dart';
@@ -88,13 +89,16 @@ class AuthService {
         response: response,
         context: context,
         onSuccess: () async {
-          SharedPreferences preferences = await SharedPreferences.getInstance();
+          final StorageService _storageService = StorageService();
+
+          final StorageItem token = StorageItem(
+              'x-access-token', jsonDecode(response.body)['access_token']);
+
+          _storageService.writeSecureData(token);
 
           Provider.of<UserProvider>(context, listen: false)
               .setUser(response.body);
 
-          await preferences.setString(
-              'x-access-token', jsonDecode(response.body)['access_token']);
           Navigator.pushNamedAndRemoveUntil(
             context,
             HomeScreen.routeName,
