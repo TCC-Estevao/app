@@ -16,6 +16,8 @@ class RoundedPasswordField extends StatelessWidget {
       child: TextField(
         controller: controller,
         obscureText: true,
+        keyboardType: TextInputType.text,
+        textInputAction: TextInputAction.done,
         decoration: const InputDecoration(
           hintText: "Senha",
           icon: Icon(
