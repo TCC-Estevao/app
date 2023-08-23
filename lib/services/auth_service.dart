@@ -15,7 +15,7 @@ import 'package:provider/provider.dart';
 import '../constants/error_handling.dart';
 import '../constants/utils.dart';
 import '../providers/user-provider.dart';
-import '../screens/Home/home_screen.dart';
+import '../screens/BottomMenu/bottom_menu.dart';
 
 class AuthService {
   //sign up user
@@ -91,7 +91,7 @@ class AuthService {
 
           Navigator.pushNamedAndRemoveUntil(
             context,
-            HomeScreen.routeName,
+            BottomMenu.routeName,
             (route) => false,
           );
         },

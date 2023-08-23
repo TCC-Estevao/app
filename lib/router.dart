@@ -1,3 +1,4 @@
+import 'package:app/screens/BottomMenu/bottom_menu.dart';
 import 'package:app/screens/Home/home_screen.dart';
 import 'package:app/screens/Login/login_screen.dart';
 import 'package:app/screens/SignUp/signup_screen.dart';
@@ -20,6 +21,11 @@ Route<dynamic> generateRouter(RouteSettings routeSettings) {
       return MaterialPageRoute(
         settings: routeSettings,
         builder: (_) => const LoginScreen(),
+      );
+    case BottomMenu.routeName:
+      return MaterialPageRoute(
+        builder: (_) => const BottomMenu(),
+        settings: routeSettings,
       );
     case HomeScreen.routeName:
       return MaterialPageRoute(

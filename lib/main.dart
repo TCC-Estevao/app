@@ -1,6 +1,6 @@
 import 'package:app/providers/user-provider.dart';
 import 'package:app/router.dart';
-import 'package:app/screens/Home/home_screen.dart';
+import 'package:app/screens/BottomMenu/bottom_menu.dart';
 import 'package:app/screens/admin/admin_screen.dart';
 import 'package:app/styles/colors.dart';
 import 'package:app/screens/Welcome/welcome_screen.dart';
@@ -30,10 +30,18 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: primaryColor,
         scaffoldBackgroundColor: Colors.white,
+        buttonTheme: const ButtonThemeData(
+          buttonColor: primaryColor,
+        ),
+        iconTheme: const IconThemeData(color: primaryColor),
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          backgroundColor: primaryColor,
+          selectedItemColor: primaryColor,
+        ),
       ),
       home: Provider.of<UserProvider>(context).user.accessToken.isNotEmpty
           ? Provider.of<UserProvider>(context).user.isAdmin
-              ? const HomeScreen()
+              ? const BottomMenu()
               : const AdminScreen()
           : const WelcomeScreen(),
     );
