@@ -84,7 +84,7 @@ class User {
       spendingLimit: spendingLimit ?? this.spendingLimit,
       financialAccount: financialAccount ?? this.financialAccount,
       category: category ?? this.category,
-      accessToken: access_token ?? this.accessToken,
+      accessToken: access_token ?? accessToken,
     );
   }
 }

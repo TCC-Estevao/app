@@ -1,8 +1,10 @@
+
 import 'package:app/components/already_have_account_check.dart';
 import 'package:app/components/rounded_button.dart';
 import 'package:app/components/rounded_input.dart';
 import 'package:app/screens/Login/components/rounded_password_input.dart';
 import 'package:app/screens/Login/login_screen.dart';
+import 'package:app/utils/validations/email.dart';
 import 'package:flutter/material.dart';
 
 import '../../styles/colors.dart';
@@ -63,11 +65,26 @@ class _SignUpBodyState extends State<SignUpBody> {
               hinText: "Seu nome",
               icon: Icons.person,
               controller: _nameController,
+              validator: (value) {
+                if (value == null || value.isEmpty || value.length < 2) {
+                  return 'Informe um nome válido';
+                }
+                return null;
+              },
             ),
             RoundedInputField(
               hinText: "Seu email",
               icon: Icons.person,
               controller: _emailController,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Informe um email';
+                }
+                if (!isValidEmail(value)) {
+                  return 'Informe um email válido';
+                }
+                return null;
+              },
             ),
             RoundedPasswordField(controller: _passwordController),
             RoundedButton(

@@ -1,7 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:app/dtos/user/login-user-dto.dart';
 import 'package:app/dtos/user/signup-user-dto.dart';
@@ -29,10 +28,7 @@ class AuthService {
     try {
       SignUpUserDTO user =
           SignUpUserDTO(email: email, password: password, name: name);
-      log("Senha");
-      log(user.password);
       String? uri = dotenv.env['URI'];
-      log(uri!);
       http.Response response = await http.post(
         Uri.parse('$uri/user/signup'),
         body: user.toJson(),
@@ -40,18 +36,16 @@ class AuthService {
           'Content-Type': 'application/json; charset=UTF-8'
         },
       );
-      log('${response.statusCode}');
 
       httpErrorHandle(
         response: response,
         context: context,
         onSuccess: () {
-          log("Deu certto");
           showSnackBar(
             context,
             'Conta criada com sucesso! Voce será direcionado para a página de Login',
           );
-          Future.delayed(Duration(seconds: 2), () {
+          Future.delayed(const Duration(seconds: 2), () {
             Navigator.pushNamedAndRemoveUntil(
               context,
               LoginScreen.routeName,
@@ -60,9 +54,7 @@ class AuthService {
           });
         },
       );
-    } catch (error, stackTrace) {
-      print(stackTrace);
-      log("Entrou aqui ${error.toString()}");
+    } catch (error) {
       showSnackBar(context, error.toString());
     }
   }
@@ -75,8 +67,6 @@ class AuthService {
     try {
       LoginUserDTO user = LoginUserDTO(email: email, password: password);
       String? uri = dotenv.env['URI'];
-      String url = '$uri/login';
-      log('$url');
       http.Response response = await http.post(
         Uri.parse('$uri/login'),
         body: user.toJson(),
@@ -89,12 +79,12 @@ class AuthService {
         response: response,
         context: context,
         onSuccess: () async {
-          final StorageService _storageService = StorageService();
+          final StorageService storageService = StorageService();
 
           final StorageItem token = StorageItem(
               'x-access-token', jsonDecode(response.body)['access_token']);
 
-          _storageService.writeSecureData(token);
+          storageService.writeSecureData(token);
 
           Provider.of<UserProvider>(context, listen: false)
               .setUser(response.body);
@@ -104,13 +94,9 @@ class AuthService {
             HomeScreen.routeName,
             (route) => false,
           );
-
-          log("Deu tudo certo");
         },
       );
-    } catch (error, stackTrace) {
-      print(stackTrace);
-      log("Entrou aqui Login: ${error.toString()}");
+    } catch (error) {
       showSnackBar(context, error.toString());
     }
   }
