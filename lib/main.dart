@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       title: 'Finance',
       theme: ThemeData(
         primaryColor: primaryColor,
-        scaffoldBackgroundColor: Colors.white,
+        scaffoldBackgroundColor: backgroundColor,
         buttonTheme: const ButtonThemeData(
           buttonColor: primaryColor,
         ),
