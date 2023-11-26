@@ -23,15 +23,15 @@ class _RoundedPasswordFieldState extends State<RoundedPasswordField> {
     return TextFieldContainer(
       child: TextFormField(
         controller: widget.controller,
+        obscureText: true,
+        keyboardType: TextInputType.text,
+        textInputAction: TextInputAction.done,
         validator: (value) {
           if (value == null || value.isEmpty) {
             return 'Informe uma senha';
           }
           return null;
         },
-        obscureText: !visible,
-        keyboardType: TextInputType.text,
-        textInputAction: TextInputAction.done,
         decoration: InputDecoration(
           labelText: "Senha",
           labelStyle: const TextStyle(color: primaryColor),

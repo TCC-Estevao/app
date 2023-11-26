@@ -1,6 +1,10 @@
+import 'dart:developer';
+
 import 'package:app/screens/Home/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../providers/user-provider.dart';
 import '../../styles/colors.dart';
 import '../Transactions/transactions_screen.dart';
 
@@ -51,6 +55,10 @@ class _BottomMenuState extends State<BottomMenu> {
               label: "Transações"),
         ],
         onTap: (screen) {
+          final userProvider = Provider.of<UserProvider>(context, listen: false)
+              .user
+              .accessToken;
+          log('Sem sessão? ${userProvider.isEmpty}');
           screenController.animateToPage(
             screen,
             duration: const Duration(milliseconds: 1000),

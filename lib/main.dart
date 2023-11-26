@@ -29,6 +29,16 @@ class MyApp extends StatelessWidget {
       title: 'Finance',
       theme: ThemeData(
         primaryColor: primaryColor,
+        textTheme: const TextTheme(
+          bodyMedium: TextStyle(
+            fontSize: 18.0,
+            fontWeight: FontWeight.w400,
+            fontFamily: 'Montserrat',
+          ),
+          bodySmall: TextStyle(
+            fontFamily: 'Montserrat',
+          ),
+        ),
         scaffoldBackgroundColor: backgroundColor,
         buttonTheme: const ButtonThemeData(
           buttonColor: primaryColor,
